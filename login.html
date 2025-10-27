@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Iniciar sesión / Registrarse</title>
+
+<!-- Fuente Roboto (igual a tu proyecto) -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* === Tus estilos base (copiados exactamente) === */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root{
+  --accent-start: #6a11cb;
+  --accent-end: #2575fc;
+  --focus: #74ebd5;
+}
+
+*{box-sizing:border-box}
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Contenedor principal: ajustado para layout dividido */
+.auth-wrapper {
+    width: 92%;
+    max-width: 1100px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 640px;
+}
+
+/* Panel izquierdo para imagen/ilustración */
+.auth-hero {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02));
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagen dentro del panel izquierdo - reemplázala por la tuya */
+.auth-hero img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Panel derecho: formulario */
+.auth-form {
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Encabezado */
+.auth-form h2 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+}
+.auth-form p.lead {
+    margin: 0 0 22px 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Inputs y selects (usando tus estilos) */
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 500;
+    color: #333;
+    font-size: 13px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 8px 0 14px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    background: #fff;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--focus);
+    box-shadow: 0 0 8px rgba(116, 235, 213, 0.25);
+    outline: none;
+}
+
+/* Botones (misma paleta que tu proyecto) */
+.btn {
+    display: inline-block;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: #fff;
+    background: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-end) 100%);
+    transition: transform .18s ease, box-shadow .18s ease;
+    width: 100%;
+    font-size: 15px;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(37,117,252,0.2); }
+
+/* Link secundario */
+.small-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent-end);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* Toggle entre login / register */
+.toggle-row {
+    display:flex;
+    gap:12px;
+    margin-bottom: 18px;
+    align-items:center;
+}
+
+/* Mensajes */
+.alert {
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-top: 8px;
+    font-weight: 500;
+}
+.alert.success { background: #e6f4ea; border-left: 5px solid #28a745; color:#1f4630; }
+.alert.error   { background: #fcebea; border-left: 5px solid #dc3545; color:#3b1a1a; }
+.alert.info    { background: #eef2ff; border-left: 5px solid var(--accent-start); color:#13325b; }
+
+/* Footer pequeña */
+.auth-form .foot {
+    margin-top: 14px;
+    color:#6b7280;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .auth-wrapper { grid-template-columns: 1fr; min-height: auto; }
+    .auth-hero { display: none; } /* ocultar imagen en móvil para simplicidad */
+    .auth-form { padding: 30px; }
+}
+</style>
+</head>
+<body>
+
+<div class="auth-wrapper" role="main">
+  <!-- Panel izquierdo: imagen/ilustración -->
+  <div class="auth-hero" aria-hidden="true">
+    <!--
+      Reemplaza el src por tu imagen/ilustración.
+      También puedes remover el elemento <img> y colocar un <div> con background-image si prefieres.
+    -->
+    <img id="heroImg" src="https://img.freepik.com/vector-gratis/plantilla-portada-redes-sociales-salud-mental-degradada_23-2149047845.jpg?semt=ais_hybrid&w=740&q=80" />
+  </div>
+
+  <!-- Panel derecho: formularios -->
+  <div class="auth-form">
+    <div id="formsContainer">
+      <!-- Título y subtítulo -->
+      <h2 id="formTitle">Iniciar sesión</h2>
+      <p class="lead" id="formSubtitle">Bienvenido — ingresa tu cuenta para continuar con el checklist.</p>
+
+      <!-- Mensaje de estado -->
+      <div id="messageArea"></div>
+
+      <!-- Formulario de Login -->
+      <form id="loginForm" style="display:block;">
+        <label for="loginEmail">Email</label>
+        <input id="loginEmail" name="loginEmail" type="email" placeholder="Correo@ejemplo.com" required>
+
+        <label for="loginPassword">Contraseña</label>
+        <input id="loginPassword" name="loginPassword" type="password" placeholder="********" required>
+
+        <button class="btn" type="submit">Iniciar sesión</button>
+
+        <div class="foot">
+          ¿No tienes cuenta? <a href="#" id="showRegister" class="small-link">Regístrate aquí</a>
+        </div>
+      </form>
+
+      <!-- Formulario de Registro -->
+      <form id="registerForm" style="display:none;">
+        <label for="regName">Nombre</label>
+        <input id="regName" name="regName" type="text" placeholder="Tu nombre completo" required>
+
+        <label for="regEmail">Email</label>
+        <input id="regEmail" name="regEmail" type="email" placeholder="tucorreo@ejemplo.com" required>
+
+        <label for="regPassword">Contraseña</label>
+        <input id="regPassword" name="regPassword" type="password" placeholder="Tu contraseña (min 6)" required>
+
+        <button class="btn" type="submit">Crear cuenta</button>
+
+        <div class="foot">
+          ¿Ya tienes cuenta? <a href="#" id="showLogin" class="small-link">Inicia sesión</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas | Análisis Emocional</title>
+  <link rel="stylesheet" href="../estadistica/estadistica.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📊 Estadísticas de bienestar emocional</h1>
+  </header>
+
+  <main class="container">
+    <section class="resumen">
+  <h2>Resumen general</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Usuarios registrados</h3>
+      <p id="usuarios">0</p>
+    </div>
+    <div class="card">
+      <h3>Evaluaciones realizadas</h3>
+      <p id="evaluaciones">0</p>
+    </div>
+    <div class="card">
+      <h3>Promedio general</h3>
+      <p id="promedio">0</p>
+    </div>
+  </div>
+</section>
+
+<section class="graficos">
+  <h2>Distribución de estados emocionales</h2>
+  <canvas id="graficoEstados"></canvas>
+</section>
+
+  
+
+  <footer>
+    <a href="../formulario/formulario.html">← Volver al formulario</a>
+  </footer>
+
+  <script src="../estadistica/estadistica.js"></script>
+</body>
+</html>
