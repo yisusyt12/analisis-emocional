@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
     formulario.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Tomar valores de q1…q5
+        // Tomar valores de q1…q10
         const valores = [];
-        for (let i = 1; i <= 5; i++) {
-            valores.push(Number(formulario[`q${i}`].value));
+        for(let i=1; i<=10; i++){
+    valores.push(Number(formulario[`q${i}`].value));
         }
 
         const suma = valores.reduce((a, b) => a + b, 0);
